@@ -1,0 +1,15 @@
+{
+  "type": "module",
+  "name": "forexrate",
+  "version": "1.0.0",
+  "description": "using websockets for getting live forexrate",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "sangit gurung",
+  "license": "ISC",
+  "dependencies": {
+    "ws": "^8.0.0"
+  }
+}
