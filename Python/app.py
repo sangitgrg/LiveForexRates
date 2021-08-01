@@ -2,6 +2,7 @@ import websocket
 
 
 def on_message(ws, message):
+    rate_obj = message
     print(message)
 
 
@@ -14,7 +15,7 @@ def on_close(ws):
 
 
 def on_open(ws):
-    ws.send('{"type":"subscribe","symbol":"JPYNPR"}')
+    ws.send('{"type":"subscribe","symbol":"OANDA:USD_JPY"}')
 
 
 if __name__ == "__main__":
