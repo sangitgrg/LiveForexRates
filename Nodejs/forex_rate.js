@@ -1,0 +1,6 @@
+const getsupportedexchangeslist = () => {
+
+}
+const getsupportedforexsymbolslist = () => {
+
+}

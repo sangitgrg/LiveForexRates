@@ -1,7 +1,8 @@
 import WebSocket from 'ws';
-import { doesRateMatch } from './rate_checker'
+import { doesRateMatch } from './rate_checker';
+import { getapikey, getusersetrate } from './config_reader';
 
-const socket = new WebSocket('wss://ws.finnhub.io?token=');
+const socket = new WebSocket(getapikey);
 
 // Connection opened -> Subscribe
 socket.addEventListener('open', function (event) {
@@ -12,8 +13,12 @@ socket.addEventListener('open', function (event) {
 socket.addEventListener('message', function (event) {
     const rate_obj = event.data;
     // check if user set rate is equal to rate_obj
-    doesRateMatch(rate_obj.p, 123)
     // and send notification
+    if (doesRateMatch(rate_obj.p, 123))
+        console.log('rate matches')
+    else
+        console.log('rate doesnot match')
+
 
     console.log('Message from server ', event.data);
 });
