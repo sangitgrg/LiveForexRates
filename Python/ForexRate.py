@@ -1,20 +1,20 @@
-from Python.config_reader import ConfigReader
+from Python.ConfigReader import ConfigReader
 import requests
 settings = ConfigReader()
-api_url = settings.getapikey()
-api_token = settings.getapitoken()
-forex_symbol = settings.getusersetexchange()
+api_url = settings.get_api_key()
+api_token = settings.get_api_token()
+forex_symbol = settings.get_user_set_exchange()
 
 
 class ForexRate:
 
-    def getexchangeslist():
+    def get_exchanges_list():
         parameters = {
             "token": api_token}
         response = requests.get(api_url, params=parameters)
         return response
 
-    def getexchangesymbol(self):
+    def get_exchange_symbol(self):
         parameters = {
             "exchange": forex_symbol,
             "token": api_token}
