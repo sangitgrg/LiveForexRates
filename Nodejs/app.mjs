@@ -1,7 +1,7 @@
-const WebSocket = require('ws')
-const { getapitoken, getusersetrate, getwebscoketurl } = require('./config_reader');
-const rate_checker = require('./rate_checker');
-const socket = new WebSocket(`${getwebscoketurl}${getapitoken}`);
+import WebSocket from 'ws';
+const { getapikey } = require('./config_reader');
+var rate_checker = require('./rate_checker');
+const socket = new WebSocket(getapikey);
 
 // Connection opened -> Subscribe
 socket.addEventListener('open', function (event) {
@@ -13,7 +13,7 @@ socket.addEventListener('message', function (event) {
     const rate_obj = event.data;
     // check if user set rate is equal to rate_obj
     // and send notification
-    if (rate_checker.doesRateMatch(getusersetrate, rate_obj.p))
+    if (rate_checker.doesRateMatch(rate_obj.p, 123))
         console.log('rate matches')
     else
         console.log('rate doesnot match')

@@ -1,5 +1,4 @@
 {
-  "type": "module",
   "name": "forexrate",
   "version": "1.0.0",
   "description": "using websockets for getting live forexrate",
@@ -10,6 +9,7 @@
   "author": "sangit gurung",
   "license": "ISC",
   "dependencies": {
+    "ini": "^2.0.0",
     "ws": "^8.0.0"
   }
 }

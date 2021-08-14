@@ -1,14 +1,17 @@
-var fs = require('fs')
+const fs = require('fs')
     , ini = require('ini')
 
-var config = ini.parse(fs.readFileSync('./config.ini', 'utf-8'))
+const config = ini.parse(fs.readFileSync('./config.ini', 'utf-8'))
 
-const getapikey = () => {
-    return config.api.api_url;
-}
+const getwebscoketurl = config.api.websocket_url;
 
-const getusersetrate = () => {
-    return config.user_settings.user_set_rate;
-}
+const getapikey = config.api.api_url;
 
-export const getapikey, getusersetrate;
+const getapitoken = config.api.token;
+
+const getusersetrate = config.user_settings.user_set_rate;
+
+exports.getapikey = getapikey;
+exports.getusersetrate = getusersetrate;
+exports.getwebscoketurl = getwebscoketurl;
+exports.getapitoken = getapitoken;
