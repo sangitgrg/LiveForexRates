@@ -10,14 +10,16 @@ socket.addEventListener('open', function (event) {
 
 // Listen for messages
 socket.addEventListener('message', function (event) {
-    const rate_obj = event.data;
-    // check if user set rate is equal to rate_obj
-    // and send notification
-    if (rate_checker.doesRateMatch(getusersetrate, rate_obj.p))
-        console.log('rate matches')
-    else
-        console.log('rate doesnot match')
-    console.log('Message from server ', event.data);
+    const rate_obj = JSON.parse(event.data);
+    if (rate_obj['type'] == 'trade') {
+        console.log('Message from server ', rate_obj.data[0].p);
+        // check if user set rate is equal to rate_obj
+        // and send notification
+        if (rate_checker.doesRateMatch(getusersetrate, rate_obj.data[0].p))
+            console.log('rate matches')
+        else
+            console.log('rate doesnot match')
+    }
 });
 
 // Unsubscribe
